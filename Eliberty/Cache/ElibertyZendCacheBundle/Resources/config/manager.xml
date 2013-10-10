@@ -4,10 +4,16 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="eliberty_zend_cache.manager.class">Zend\Cache\Manager</parameter>
+        <parameter key="eliberty_zend_cache.manager.class">Zend\Cache\Storage\Adapter\Filesystem</parameter>
+        <parameter key="eliberty_zend_cache.factory.class">Zend\Cache\StorageFactory</parameter>
     </parameters>
 
     <services>
-        <service id="eliberty_zend_cache.manager" class="%eliberty_zend_cache.manager.class%" />
+         <service id="eliberty_zend_cache.factory"
+             factory-class="%eliberty_zend_cache.factory.class%"
+             class="%eliberty_zend_cache.factory.class%"
+             factory-method="factory">
+             <argument type="collection" id="eliberty_zend_cache.config" />
+        </service>
     </services>
 </container>

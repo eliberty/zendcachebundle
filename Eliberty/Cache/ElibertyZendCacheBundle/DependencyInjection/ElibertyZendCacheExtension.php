@@ -19,18 +19,10 @@ class ElibertyZendCacheExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('manager.xml');
-
-        $templates = array();
-        foreach ($configs as $config) {
-            if (isset($config['templates'])) {
-                $templates = array_merge($templates, $config['templates']);
-            }
-        }
-
-        foreach ($templates as $name => $template) {
-            $container->findDefinition('eliberty_zend_cache.manager')->addMethodCall('setCacheTemplate', array($name, $template));
-        }
+        $container->register('eliberty.zend_cache')
+            ->setClass('Zend\Cache\Storage\Adapter\AbstractAdapter')
+            ->setFactoryClass('Zend\Cache\StorageFactory')
+            ->setFactoryMethod('factory')
+            ->setArguments($configs);
     }
 }
