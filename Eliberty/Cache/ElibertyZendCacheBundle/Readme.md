@@ -1,0 +1,1 @@
+Zend Cache integration
