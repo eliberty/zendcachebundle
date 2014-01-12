@@ -1,0 +1,24 @@
+{
+    "name": "eliberty/zendcachebundle",
+    "description": "Zend cache wrapper for Symfony.",
+    "license": "CLOSED",
+    "authors": [
+        {
+            "name": "eliberty",
+            "email": "eliberty@eliberty.fr"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require": {
+        "php": "~5.3",
+        "zendframework/zend-cache": "2.3.*@dev",
+        "zendframework/zend-serializer": "2.3.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Eliberty": "."
+        }
+    }
+}
